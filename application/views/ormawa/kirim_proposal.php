@@ -46,7 +46,7 @@
             <p class="text-muted m-b-30 font-13"> Tambah data proposal </p>
             <div class="row">
               <div class="col-sm-12 col-xs-12">
-                <?php if(in_array($level, array(4,3))  AND in_array($dt['status'],array(1,3,''))): ?>
+                <?php if(in_array($level, array(4,3))  AND in_array($dt['status'],array(1,3))): ?>
                   <div class="alert alert-info">
                     Mohon maaf masih proses tahap verifikasi admin
                   </div>

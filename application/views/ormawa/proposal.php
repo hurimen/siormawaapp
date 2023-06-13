@@ -63,7 +63,7 @@
                       <form action="" method="POST"> 
                         <a href="<?php echo base_url(); ?>preview?id=<?php echo $data['id']; ?>" class="btn btn-primary btn-sm"><i class="ti-eye"></i></a>
                         <a href="<?php echo base_url(); ?>send?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm"><i class="ti-new-window"></i></a>
-                        <?php if(in_array($level, array(4,3))  AND in_array($data['status'],array(1,3,''))): ?>
+                        <?php if(in_array($level, array(4,3))  AND in_array($data['status'],array(1,3))): ?>
                         <?php else: ?>
                           <a href="<?php echo base_url(); ?>act_proposal?id=<?php echo $data['id']; ?>" class="btn btn-success btn-sm"><i class="ti-pencil-alt"></i></a>
                           <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
