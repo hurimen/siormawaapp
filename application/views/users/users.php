@@ -9,6 +9,29 @@
       </div>
       <!-- /.col-lg-12 -->
     </div>
+
+    <?php
+    if (isset($_REQUEST['hapus'])) {
+      $hapus = $this->db->query("DELETE FROM tb_users WHERE id='".$_REQUEST['id']."'");
+      if ($hapus) {
+        echo '
+        <div class="alert alert-success alert-dismissible" role="alert">
+        <div class="alert-message">
+        <strong>Perhatian !! Data berhasil dihapus</strong>
+        </div>
+        </div>
+
+        ';
+      }else{
+        echo '
+        <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-message">
+        <strong>Perhatian !! Data gagal dihapus</strong>
+        </div>
+        </div>
+        ';
+      }
+    }?>
     <!-- row -->
     <div class="row">
       <div class="col-md-12">
@@ -56,26 +79,27 @@
                   if($value['level']==1){echo "ADMIN";}
                   elseif ($value['level']==2) {echo "BAKM";}
                   elseif ($value['level']==3) {echo "BAK";} 
-                  elseif ($value['level']==4) {echo "MAHASISWA";}
+                  elseif ($value['level']==4) {echo "ORMAWA";}
                   ?>
 
                 </td>
                 <td>
                   <?php if(in_array($this->session->userdata('username')['level'], array(1))) : ?>
-                 <form>
+                  <form action="" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
                    <a href="<?php echo base_url(); ?>act_user?id=<?php echo $value['id']; ?>" class="btn btn-primary btn-sm"><i class="ti-pencil"></i></a>
-                   <button class="btn btn-danger btn-sm"><i class="ti-trash"></i></button>
+                   <button class="btn btn-danger btn-sm" name="hapus" type="submit" onclick="return confirm('Apakah ingin menghapus data ini ?')"><i class="ti-trash"></i></button>
                  </form>
                  <?php else : ?>
                   Hak akses BAKM
-                 <?php endif;?>
-               </td>
-             </tr>
-           <?php endforeach; ?>
-         </tbody>
-       </table>
-     </div>
-   </div>
- </div>
+                <?php endif;?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </div>
 </div>
